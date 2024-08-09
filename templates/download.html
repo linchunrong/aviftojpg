@@ -60,20 +60,12 @@
     <!-- Content -->
     <div class="mx-auto flex max-w-xl flex-col p-10 md:py-20">
       <!-- Title -->
-      <h3 class="mb-2 text-2xl font-bold md:text-4xl"> Newsletter Signup </h3>
-      <p class="mb-6 text-sm text-gray-500 sm:text-base lg:mb-8"> Egestas consectetur a cras aliquam tincidunt tellus quam. Quis faucibus tincidunt etiam sed </p>
-      <!-- Form -->
-       <!--
-      <form name="email-form" method="get" class="relative mb-4 max-w-full">
-        <input type="email" class="block h-9 w-full rounded-md border border-solid border-black px-3 py-6 text-sm text-black placeholder:text-black" placeholder="Enter your email" required="" />
-		    <input type="submit" value="Subscribe" class="relative top-2 sm:top-1/2 sm:-translate-y-1/2 w-full cursor-pointer rounded-md bg-black px-6 py-2 font-semibold text-white sm:absolute sm:right-1 sm:w-36" />
-      </form>
-    -->
+      <h3 class="mb-2 text-2xl font-bold md:text-4xl"> File Converted Successfully </h3>
+      <p class="mb-6 text-sm text-gray-500 sm:text-base lg:mb-8"> Your file has been converted. Click the link below to download it: </p>
     <form name="uploadForm" action="/" method="post" enctype="multipart/form-data" class="relative mb-4 max-w-full">
-        <!--<input type="file" name="file" id="fileInput" class="block h-10 w-full border border-solid border-black px-3 py-2 text-sm text-black placeholder-black rounded-md bg-white cursor-pointer" onchange="uploadFile()">-->
-      <label for="fileInput" class="block h-10 w-full relative bg-black rounded-md border border-solid border-black">
-        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-white text-sm, front-bold">Choose an AVIF file</span>
-          <input type="file" name="file" id="fileInput" class="opacity-0 absolute inset-0 w-full h-full cursor-pointer" onchange="uploadFile()" accept=".avif" required>
+      <label for="fileDownload" class="block h-10 w-full relative bg-black rounded-md border border-solid border-black">
+        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-white text-sm, front-bold">File: {{ filename }}</span>
+          <a id="fileDownload" href="{{ url_for('download_file', filename=filename) }}" class="opacity-0 absolute inset-0 w-full h-full cursor-pointer"></a>
       </label>
     </form>
       <p class="text-sm text-gray-500"> File size limit: 16MB Maximum. </p>
