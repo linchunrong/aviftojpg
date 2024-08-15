@@ -1,75 +1,70 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask import Flask, request, redirect, url_for, render_template, send_from_directory
+from flask import Flask, render_template, request, send_file, redirect, url_for
+import os
 from werkzeug.utils import secure_filename
 from PIL import Image
-import os
+import av
+from config import *
 
 app = Flask(__name__)
-app.config.from_pyfile('config.py')
 
-upload_path = app.config['UPLOAD_FOLDER']
-converted_path = app.config['CONVERTED_FOLDER']
-upload_length = app.config['MAX_CONTENT_LENGTH']
-debug = app.config['DEBUG']
-host = app.config['HOST']
-port = app.config['PORT']
-
-# 确保上传目录存在
-os.makedirs(upload_path, exist_ok=True)
-os.makedirs(converted_path, exist_ok=True)
-
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'avif'}
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(CONVERTED_FOLDER, exist_ok=True)
 
 def convert_avif_to_jpg(input_path, output_path):
-    img = Image.open(input_path)
-    img.save(output_path, format='JPEG')
-
-@app.route('/download_page/<filename>')
-def download_page(filename):
-    return render_template('download.html', filename=filename)
-
-@app.route('/download/<filename>')
-def download_file(filename):
-    return send_from_directory(upload_path, filename, as_attachment=True)
+    #img = Image.open(input_path)
+    #img.save(output_path, format='JPEG')
+    container = av.open(input_path)
+    for frame in container.decode(video=0):
+        img = Image.fromarray(frame.to_rgb().to_ndarray())
+        img.save(output_path, 'JPEG')
+        print(f"Converted '{input_path}' to '{output_path}'")
+    container.close()
+    try:
+        os.remove(input_path)
+        print(f"File '{input_path}' deleted successfully.")
+    except FileNotFoundError:
+        print(f"File '{input_path}' not found.")
 
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
-        # 检查是否有文件上传
         if 'file' not in request.files:
-            return 'No file part'
+            return render_template('index.html', error='No file part')
         file = request.files['file']
-        # 如果用户没有选择文件
         if file.filename == '':
-            return 'No selected file'
+            return render_template('index.html', error='No selected file')
         if file:
-            # 保存文件到指定的上传目录
-            file.save(os.path.join(upload_path, file.filename))
-            return 'File successfully uploaded'
-
-    return render_template('index.html')
-
-def upload_file():
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            return redirect(request.url)
-        file = request.files['file']
-        if file.filename == '':
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            input_path = os.path.join(upload_path, filename)
-            file.save(input_path)
-            output_filename = filename.rsplit('.', 1)[0] + '.jpg'
-            output_path = os.path.join(converted_path, output_filename)
-            convert_avif_to_jpg(input_path, output_path)
-            return redirect(url_for('download_page', filename=output_filename))
+            file.save(os.path.join(UPLOAD_FOLDER, filename))
+            return redirect(url_for('convert_file', filename=filename))
     return render_template('index.html')
+
+@app.route('/convert/<filename>')
+def convert_file(filename):
+    return render_template('convert.html', filename=filename)
+
+@app.route('/converting/<filename>')
+def converting(filename):
+    # 这里添加文件转换的逻辑
+    # 示例: 简单地复制文件并添加 "converted_" 前缀
+    source = os.path.join(UPLOAD_FOLDER, filename)
+    dest = os.path.join(CONVERTED_FOLDER, f"converted_{filename}")
+    convert_avif_to_jpg(source, dest)
+    
+    return redirect(url_for('download_file', filename=f"converted_{filename}"))
+
+@app.route('/download/<filename>')
+def download_file(filename):
+    return render_template('download.html', filename=filename)
+
+@app.route('/get-file/<filename>')
+def get_file(filename):
+    return send_file(os.path.join(CONVERTED_FOLDER, filename), as_attachment=True)
 
 
 if __name__ == '__main__':
-    app.run(host=host, port=port, debug=debug)
+    app.run(debug=DEBUG, host=HOST, port=PORT)

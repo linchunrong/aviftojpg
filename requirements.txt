@@ -1,4 +1,5 @@
-Flask==2.0.3
-Pillow==8.4.0
-pillow-avif-plugin==1.4.6
-werkzeug==2.2.2
+Flask==3.0.3
+Pillow==10.4.0
+av==12.3.0
+werkzeug==3.0.3
+numpy==2.0.1
