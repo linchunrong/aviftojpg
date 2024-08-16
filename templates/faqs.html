@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Convert avif to jpg</title>
+	<meta name="description" content="Convert avif to jpg">
+	<script src="../static/js/tailwind.3.4.3.js"></script>
+	<script src="../static/js/menu.js"></script>
+	<script src="../static/js/faqs.js"></script>
+	<link rel="shortcut icon" href="../static/convert-icon.png" />
+	<link rel="canonical" href="https://www.aviftojpg.us"/>
+	<style type="text/css">
+	</style>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<section class="fixed top-0 left-0 right-0 z-40 bg-white shadow-md">
+  <nav class="font-inter mx-auto h-auto w-full max-w-screen-2xl">
+    <div class="flex items-center justify-between px-4 py-2 lg:px-10 lg:py-4 xl:px-20">
+      <a href="/" class="flex items-center">
+        <img src="../static/convert-icon.png" alt="aviftojpg logo" class="w-12 lg:w-16">
+        <span class="ml-2 text-lg font-semibold">AVIF Convertor</span>
+      </a>
+      
+      <!-- mobile menu -->
+      <button id="menu-toggle" class="z-50 lg:hidden">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.75 12H20.25" stroke="#160042" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M3.75 6H20.25" stroke="#160042" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M3.75 18H20.25" stroke="#160042" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+
+      <!-- web menu -->
+      <div class="hidden lg:flex lg:items-center lg:space-x-1 lg:flex-grow">
+        <div class="flex items-center space-x-1 mx-auto">
+          <a href="{{ url_for('pricing') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> Pricing </a>
+          <a href="{{ url_for('faqs') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> FAQs </a>
+        </div>
+        <div class="flex items-center space-x-1">
+          <a href="{{ url_for('signup') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> Sign Up </a>
+          <a href="{{ url_for('login') }}" class="font-inter rounded-lg bg-black px-4 py-2 text-center text-white hover:bg-gray-800"> Login </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- mobile menu overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
+
+    <!-- mobile menu -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white z-50 hidden lg:hidden pt-16 shadow-lg">
+      <div class="flex flex-col h-full justify-start items-center overflow-y-auto">
+        <a href="{{ url_for('pricing') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> Pricing </a>
+        <a href="{{ url_for('faqs') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> FAQs </a>
+        <a href="{{ url_for('signup') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> Sign Up </a>
+        <a href="{{ url_for('login') }}" class="block px-4 py-2 bg-black text-white hover:bg-gray-800 w-full text-center"> Login </a>
+      </div>
+    </div>
+  </nav>
+</section>
+
+<section class="items-center justify-center px-5 py-16 md:px-10">
+  <div class="justify-centermx-auto flex w-full max-w-7xl flex-col items-center px-5 py-16 md:px-10 md:py-20">
+    <!-- TEXT DIV -->
+    <div class="mx-auto flex max-w-xl flex-col items-center justify-center px-6 text-center lg:max-w-3xl lg:px-10">
+      <h2 class="mx-auto text-center font-bold text-black lg: text-3xl lg:text-5xl"> Frequently Asked Questions </h2>
+      <p class="font-inter mt-4 max-w-xl px-5 text-center text-base font-light text-gray-500 lg:max-w-lg"> Common questions about converting AVIF files to JPG format </p>
+    </div>
+    <!-- FAQs -->
+    <div class="mt-10 flex w-full flex-col">
+      <!-- FAQ BLOCK 1 (expantion by default) -->
+      <div class="faq-item relative my-3 w-full rounded-md px-12 py-8">
+        <div class="max-w-2xl">
+          <h2 class="font-bold text-black text-xl">What is the AVIF file format?</h2>
+          <p class="faq-answer font-inter mt-4 text-base font-light text-gray-500">AVIF (AV1 Image File Format) is an emerging image file format based on AV1 video coding technology. It offers high compression rates and excellent image quality, suitable for images in web pages and applications.</p>
+        </div>
+        <button class="faq-toggle absolute right-5 top-9">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="12" fill="white"></circle>
+            <path class="vertical-line hidden" d="M12 7.05005V16.95" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M7.05078 12H16.9508" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="mr-4 ml-8 border border-gray-200"></div>
+      <!-- FAQ BLOCK 2 (collapse by default) -->
+      <div class="faq-item relative my-3 w-full rounded-md px-12 py-8">
+        <div class="max-w-2xl">
+          <h2 class="font-bold text-black text-xl">Why convert AVIF to JPG?</h2>
+          <p class="faq-answer font-inter mt-4 text-base font-light text-gray-500 hidden">Although AVIF has many advantages, not all devices and software support this format. Converting AVIF to JPG ensures wider compatibility, allowing your images to display properly on various platforms and devices.</p>
+        </div>
+        <button class="faq-toggle absolute right-5 top-9">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="12" fill="white"></circle>
+            <path class="vertical-line" d="M12 7.05005V16.95" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M7.05078 12H16.9508" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="mr-4 ml-8 border border-gray-200"></div>
+      <!-- FAQ BLOCK 3 (collapse by default) -->
+      <div class="faq-item relative my-3 w-full rounded-md px-12 py-8">
+        <div class="max-w-2xl">
+          <h2 class="font-bold text-black text-xl">Will there be a loss in image quality during conversion?</h2>
+          <p class="faq-answer font-inter mt-4 text-base font-light text-gray-500 hidden">There may be some quality loss when converting from AVIF to JPG, as JPG is a lossy compression format. However, our conversion tool strives to maintain the best possible image quality.</p>
+        </div>
+        <button class="faq-toggle absolute right-5 top-9">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="12" fill="white"></circle>
+            <path class="vertical-line" d="M12 7.05005V16.95" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M7.05078 12H16.9508" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="mr-4 ml-8 border border-gray-200"></div>
+      <!-- FAQ BLOCK 4 (collapse by default) -->
+      <div class="faq-item relative my-3 w-full rounded-md px-12 py-8">
+        <div class="max-w-2xl">
+          <h2 class="font-bold text-black text-xl">Will the converted JPG file be larger than the original AVIF file?</h2>
+          <p class="faq-answer font-inter mt-4 text-base font-light text-gray-500 hidden">Usually, yes. The AVIF format typically offers higher compression rates than JPG, so the converted JPG file might be larger than the original AVIF file. However, the exact size difference depends on the content and complexity of the image.</p>
+        </div>
+        <button class="faq-toggle absolute right-5 top-9">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="12" fill="white"></circle>
+            <path class="vertical-line" d="M12 7.05005V16.95" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M7.05078 12H16.9508" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <p class="font-inter mx-auto mt-12 text-center text-base text-gray-500">
+      Can't find the answer you're looking for? Reach out to our 
+      <a href="mailto:ryanlin.online@gmail.com" class="text-black font-bold">
+      customer support team.
+      </a>
+    </p>
+  </div>
+</section>
+
+<footer class="block">
+  <!-- Container -->
+  <div class="py-16 md:py-20 mx-auto w-full max-w-7xl px-5 md:px-10">
+    <!-- Component -->
+    <div class="flex flex-col sm:flex-row justify-between items-center">
+      <div class="flex items-center">
+        <img src="../static/convert-file.jpg" class="h-12 w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 mr-4" alt="AVIF Converter logo" />
+        <h2 class="font-bold text-3xl md:text-4xl lg:text-5xl"> AVIF Converter </h2>
+      </div>
+      <div class="mt-8 sm:mt-0">
+        <div class="flex items-center justify-start">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a944119e6cf76_EnvelopeSimple-2.svg" alt="" class="inline-block mr-3" />
+          <p class="text-gray-500 text-sm sm:text-base"> ryanlin.online@gmail.com </p>
+        </div>
+      </div>
+    </div>
+    <div class="mb-14 w-full border-b border-black mt-16"></div>
+    <div class="flex flex-col-reverse sm:flex-col md:flex-row justify-between items-start sm:items-center">
+      <div class="font-semibold mb-4 sm:mb-0 py-1 text-center sm:text-center">
+        <a href="{{ url_for('about') }}" class="inline-block font-normal text-gray-500 transition hover:text-blue-600 sm:pr-6 lg:pr-12 py-1.5 sm:py-2 pr-6"> About </a>
+        <a href="{{ url_for('privacy') }}" class="inline-block font-normal text-gray-500 transition hover:text-blue-600 sm:pr-6 lg:pr-12 py-1.5 sm:py-2 pr-6"> Privacy </a>
+      </div>
+      <p class="text-gray-500 text-sm sm:text-base"> © Copyright 2024. All rights reserved. </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

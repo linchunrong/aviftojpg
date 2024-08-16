@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Convert avif to jpg</title>
+	<meta name="description" content="Convert avif to jpg">
+	<script src="../static/js/tailwind.3.4.3.js"></script>
+	<script src="../static/js/menu.js"></script>
+	<link rel="shortcut icon" href="../static/convert-icon.png" />
+	<link rel="canonical" href="https://www.aviftojpg.us"/>
+	<style type="text/css">
+	</style>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<section class="fixed top-0 left-0 right-0 z-40 bg-white shadow-md">
+  <nav class="font-inter mx-auto h-auto w-full max-w-screen-2xl">
+    <div class="flex items-center justify-between px-4 py-2 lg:px-10 lg:py-4 xl:px-20">
+      <a href="/" class="flex items-center">
+        <img src="../static/convert-icon.png" alt="aviftojpg logo" class="w-12 lg:w-16">
+        <span class="ml-2 text-lg font-semibold">AVIF Convertor</span>
+      </a>
+      
+      <!-- mobile menu -->
+      <button id="menu-toggle" class="z-50 lg:hidden">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.75 12H20.25" stroke="#160042" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M3.75 6H20.25" stroke="#160042" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M3.75 18H20.25" stroke="#160042" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+
+      <!-- web menu -->
+      <div class="hidden lg:flex lg:items-center lg:space-x-1 lg:flex-grow">
+        <div class="flex items-center space-x-1 mx-auto">
+          <a href="{{ url_for('pricing') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> Pricing </a>
+          <a href="{{ url_for('faqs') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> FAQs </a>
+        </div>
+        <div class="flex items-center space-x-1">
+          <a href="{{ url_for('signup') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> Sign Up </a>
+          <a href="{{ url_for('login') }}" class="font-inter rounded-lg bg-black px-4 py-2 text-center text-white hover:bg-gray-800"> Login </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- mobile menu overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
+
+    <!-- mobile menu -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white z-50 hidden lg:hidden pt-16 shadow-lg">
+      <div class="flex flex-col h-full justify-start items-center overflow-y-auto">
+        <a href="{{ url_for('pricing') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> Pricing </a>
+        <a href="{{ url_for('faqs') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> FAQs </a>
+        <a href="{{ url_for('signup') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> Sign Up </a>
+        <a href="{{ url_for('login') }}" class="block px-4 py-2 bg-black text-white hover:bg-gray-800 w-full text-center"> Login </a>
+      </div>
+    </div>
+  </nav>
+</section>
+
+<div class="pt-16 lg:pt-24">
+<section>
+  <!-- Container -->
+  <div class="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-20">
+    <!-- Heading Container -->
+    <div class="mx-auto mb-8 max-w-3xl text-center md:mb-12 lg:mb-16">
+      <!-- Heading -->
+      <h2 class="text-3xl font-bold md:text-5xl">Choose Your Plan</h2>
+      <!-- Subheading -->
+      <p class="mt-4 text-sm text-gray-500 sm:text-base">Simple & affordable pricing for our AVIF to JPG conversion service</p>
+      <!-- Coming Soon Notice -->
+      <p class="mt-4 text-sm font-bold text-red-500 sm:text-base">Coming Soon! This service is not yet officially open.</p>
+    </div>
+    <!-- Price Container -->
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 md:gap-4">
+      <!-- Basic Plan -->
+      <div class="mx-auto flex w-full max-w-md flex-col items-start rounded-md border border-gray-300 p-8">
+        <div class="mb-4 rounded-md bg-black px-4 py-1.5">
+          <p class="text-sm font-bold text-white sm:text-sm">BASIC</p>
+        </div>
+        <p class="mb-6 text-base font-light text-gray-500 md:mb-10 lg:mb-12">Convert up to 100 AVIF files to JPG per month</p>
+        <h2 class="mb-5 text-3xl font-bold md:text-5xl lg:mb-8">$9.99<span class="text-sm font-light sm:text-sm">/month</span></h2>
+        <a href="#" class="mb-5 w-full rounded-md bg-gray-300 px-6 py-3 text-center font-semibold text-black cursor-not-allowed lg:mb-8">Coming Soon</a>
+        <div class="mt-2 flex items-center">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg" alt="" class="mr-2 inline-block w-4" />
+          <p class="text-base">Up to 100 conversions/month</p>
+        </div>
+        <div class="mt-2 flex items-center">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg" alt="" class="mr-2 inline-block w-4" />
+          <p class="text-base">Standard conversion quality</p>
+        </div>
+        <div class="mt-2 flex items-center">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg" alt="" class="mr-2 inline-block w-4" />
+          <p class="text-base">Email support</p>
+        </div>
+      </div>
+      <!-- Pro Plan -->
+      <div class="mx-auto flex w-full max-w-md flex-col items-start rounded-md border border-gray-300 bg-gray-100 p-8">
+        <div class="mb-4 rounded-md bg-black px-4 py-1.5">
+          <p class="text-sm font-bold text-white sm:text-sm">PRO</p>
+        </div>
+        <p class="mb-6 text-base font-light text-gray-500 md:mb-10 lg:mb-12">Convert up to 1000 AVIF files to JPG per month</p>
+        <h2 class="mb-5 text-3xl font-bold md:text-5xl lg:mb-8">$24.99<span class="text-sm font-light sm:text-sm">/month</span></h2>
+        <a href="#" class="mb-5 w-full rounded-md bg-gray-300 px-6 py-3 text-center font-semibold text-black cursor-not-allowed md:mb-6 lg:mb-8">Coming Soon</a>
+        <div class="mt-2 flex items-center">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg" alt="" class="mr-2 inline-block w-4" />
+          <p class="text-base">Up to 1000 conversions/month</p>
+        </div>
+        <div class="mt-2 flex items-center">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg" alt="" class="mr-2 inline-block w-4" />
+          <p class="text-base">High-quality conversion</p>
+        </div>
+        <div class="mt-2 flex items-center">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg" alt="" class="mr-2 inline-block w-4" />
+          <p class="text-base">Priority email support</p>
+        </div>
+        <div class="mt-2 flex items-center">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg" alt="" class="mr-2 inline-block w-4" />
+          <p class="text-base">Batch conversion</p>
+        </div>
+      </div>
+      <!-- Enterprise Plan -->
+      <div class="mx-auto flex w-full max-w-md flex-col items-start rounded-md border border-gray-300 p-8">
+        <div class="mb-4 rounded-md bg-black px-4 py-1.5">
+          <p class="text-sm font-bold text-white sm:text-sm">ENTERPRISE</p>
+        </div>
+        <p class="mb-6 text-base font-light text-gray-500 md:mb-10 lg:mb-12">Unlimited AVIF to JPG conversions</p>
+        <h2 class="mb-5 text-3xl font-bold md:text-5xl lg:mb-8">Custom<span class="text-sm font-light sm:text-sm"> pricing</span></h2>
+        <a href="#" class="mb-5 w-full rounded-md bg-gray-300 px-6 py-3 text-center font-semibold text-black cursor-not-allowed lg:mb-8">Contact Us</a>
+        <div class="mt-2 flex items-center">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg" alt="" class="mr-2 inline-block w-4" />
+          <p class="text-base">Unlimited conversions</p>
+        </div>
+        <div class="mt-2 flex items-center">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg" alt="" class="mr-2 inline-block w-4" />
+          <p class="text-base">Premium conversion quality</p>
+        </div>
+        <div class="mt-2 flex items-center">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg" alt="" class="mr-2 inline-block w-4" />
+          <p class="text-base">24/7 priority support</p>
+        </div>
+        <div class="mt-2 flex items-center">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg" alt="" class="mr-2 inline-block w-4" />
+          <p class="text-base">API access</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<footer class="block">
+  <!-- Container -->
+  <div class="py-16 md:py-20 mx-auto w-full max-w-7xl px-5 md:px-10">
+    <!-- Component -->
+    <div class="flex flex-col sm:flex-row justify-between items-center">
+      <div class="flex items-center">
+        <img src="../static/convert-file.jpg" class="h-12 w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 mr-4" alt="AVIF Converter logo" />
+        <h2 class="font-bold text-3xl md:text-4xl lg:text-5xl"> AVIF Converter </h2>
+      </div>
+      <div class="mt-8 sm:mt-0">
+        <div class="flex items-center justify-start">
+          <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a944119e6cf76_EnvelopeSimple-2.svg" alt="" class="inline-block mr-3" />
+          <p class="text-gray-500 text-sm sm:text-base"> ryanlin.online@gmail.com </p>
+        </div>
+      </div>
+    </div>
+    <div class="mb-14 w-full border-b border-black mt-16"></div>
+    <div class="flex flex-col-reverse sm:flex-col md:flex-row justify-between items-start sm:items-center">
+      <div class="font-semibold mb-4 sm:mb-0 py-1 text-center sm:text-center">
+        <a href="{{ url_for('about') }}" class="inline-block font-normal text-gray-500 transition hover:text-blue-600 sm:pr-6 lg:pr-12 py-1.5 sm:py-2 pr-6"> About </a>
+        <a href="{{ url_for('privacy') }}" class="inline-block font-normal text-gray-500 transition hover:text-blue-600 sm:pr-6 lg:pr-12 py-1.5 sm:py-2 pr-6"> Privacy </a>
+      </div>
+      <p class="text-gray-500 text-sm sm:text-base"> © Copyright 2024. All rights reserved. </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -14,8 +14,6 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(CONVERTED_FOLDER, exist_ok=True)
 
 def convert_avif_to_jpg(input_path, output_path):
-    #img = Image.open(input_path)
-    #img.save(output_path, format='JPEG')
     container = av.open(input_path)
     for frame in container.decode(video=0):
         img = Image.fromarray(frame.to_rgb().to_ndarray())
@@ -27,7 +25,6 @@ def convert_avif_to_jpg(input_path, output_path):
         print(f"File '{input_path}' deleted successfully.")
     except FileNotFoundError:
         print(f"File '{input_path}' not found.")
-
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
@@ -49,10 +46,8 @@ def convert_file(filename):
 
 @app.route('/converting/<filename>')
 def converting(filename):
-    # 这里添加文件转换的逻辑
-    # 示例: 简单地复制文件并添加 "converted_" 前缀
     source = os.path.join(UPLOAD_FOLDER, filename)
-    dest = os.path.join(CONVERTED_FOLDER, f"converted_{filename}")
+    dest = os.path.join(CONVERTED_FOLDER, f"converted_{filename}.replace('.avif', '.jpg')")
     convert_avif_to_jpg(source, dest)
     
     return redirect(url_for('download_file', filename=f"converted_{filename}"))
@@ -65,6 +60,29 @@ def download_file(filename):
 def get_file(filename):
     return send_file(os.path.join(CONVERTED_FOLDER, filename), as_attachment=True)
 
+@app.route('/faqs')
+def faqs():
+    return render_template('faqs.html')
+
+@app.route('/pricing')
+def pricing():
+    return render_template('pricing.html')
+
+@app.route('/signup')
+def signup():
+    return render_template('signin.html')
+
+@app.route('/login')
+def login():
+    return render_template('signin.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
 
 if __name__ == '__main__':
     app.run(debug=DEBUG, host=HOST, port=PORT)
