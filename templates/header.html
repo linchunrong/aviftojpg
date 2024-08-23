@@ -1,0 +1,44 @@
+<section class="fixed top-0 left-0 right-0 z-40 bg-white shadow-md">
+  <nav class="font-inter mx-auto h-auto w-full max-w-screen-2xl">
+    <div class="flex items-center justify-between px-4 py-2 lg:px-10 lg:py-4 xl:px-20">
+      <a href="/" class="flex items-center">
+        <img src="../static/convert-icon.png" alt="aviftojpg logo" class="w-12 lg:w-16">
+        <span class="ml-2 text-lg font-semibold">AVIF Convertor</span>
+      </a>
+      
+      <!-- mobile menu -->
+      <button id="menu-toggle" class="z-50 lg:hidden">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.75 12H20.25" stroke="#160042" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M3.75 6H20.25" stroke="#160042" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M3.75 18H20.25" stroke="#160042" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+
+      <!-- web menu -->
+      <div class="hidden lg:flex lg:items-center lg:space-x-1 lg:flex-grow">
+        <div class="flex items-center space-x-1 mx-auto">
+          <a href="{{ url_for('main.pricing') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> Pricing </a>
+          <a href="{{ url_for('main.faqs') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> FAQs </a>
+        </div>
+        <div class="flex items-center space-x-1">
+          <a href="{{ url_for('auth.signup') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> Sign Up </a>
+          <a href="{{ url_for('auth.signup') }}" class="font-inter rounded-lg bg-black px-4 py-2 text-center text-white hover:bg-gray-800"> Login </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- mobile menu overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
+
+    <!-- mobile menu -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white z-50 hidden lg:hidden pt-16 shadow-lg">
+      <div class="flex flex-col h-full justify-start items-center overflow-y-auto">
+        <a href="{{ url_for('main.pricing') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> Pricing </a>
+        <a href="{{ url_for('main.faqs') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> FAQs </a>
+        <a href="{{ url_for('auth.signup') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> Sign Up </a>
+        <a href="{{ url_for('auth.signup') }}" class="block px-4 py-2 bg-black text-white hover:bg-gray-800 w-full text-center"> Login </a>
+      </div>
+    </div>
+  </nav>
+</section>
