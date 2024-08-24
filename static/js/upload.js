@@ -18,41 +18,39 @@
         }
 
         function highlight() {
-            console.log('Highlight');
             dropArea.classList.add('bg-gray-100');
         }
 
         function unhighlight() {
-            console.log('Unhighlight');
             dropArea.classList.remove('bg-gray-100');
         }
 
         function handleDrop(e) {
-            console.log('File dropped');
             const dt = e.dataTransfer;
             const files = dt.files;
             handleFiles(files);
         }
 
         function handleFiles(files) {
-          if (files.length > 0) {
-            const MAX_SIZE = 100 * 1024 * 1024; // 100MB in bytes
-            const selectedFile = files[0];
-            // Check if the selected file is an AVIF
-            if (selectedFile.type !== 'image/avif') {
-                alert('Only AVIF files are allowed!');
-                fileInput.value = ''; // Clear file selection
-                return;
+            if (files.length > 0) {
+                const MAX_SIZE = 100 * 1024 * 1024; // 100MB in bytes
+                const selectedFile = files[0];
+
+                if (selectedFile.type !== 'image/avif') {
+                    alert('Only AVIF files are allowed!');
+                    fileInput.value = ''; // Clear file selection
+                    return;
+                }
+
+                if (selectedFile.size > MAX_SIZE) {
+                    alert("File is too big! Maximum size allowed is 100MB.");
+                    fileInput.value = ''; // Clear file selection
+                    return;
+                }
+
+                fileInput.files = files;
+                updateFileInfo();
             }
-            // Check if the selected file is too big
-            if (selectedFile.size > MAX_SIZE) {
-                alert("File is too big! Maximum size allowed is 16MB.");
-                fileInput.value = ''; // Clear file selection
-                return;
-            }
-            fileInput.files = files;
-            updateFileInfo();
-          }
         }
 
         function updateFileInfo() {
@@ -83,6 +81,10 @@
 
         dropArea.addEventListener('drop', handleDrop, false);
 
+        dropArea.addEventListener('click', function() {
+            fileInput.click();
+        });
+
         fileInput.addEventListener('change', updateFileInfo);
 
         removeFileBtn.addEventListener('click', function(e) {
@@ -91,11 +93,4 @@
             fileInput.value = '';
             updateFileInfo();
         });
-
-        // 调试
-        dropArea.addEventListener('dragenter', () => console.log('Drag Enter'));
-        dropArea.addEventListener('dragover', () => console.log('Drag Over'));
-        dropArea.addEventListener('dragleave', () => console.log('Drag Leave'));
-        dropArea.addEventListener('drop', () => console.log('Drop'));
     });
-

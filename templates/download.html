@@ -21,6 +21,7 @@
 <section class="bg-gray-300 h-screen flex items-center justify-center">
     <div class="w-[90%] max-w-3xl bg-white p-10 md:p-20 rounded-lg shadow-lg">
         <h1 class="text-2xl md:text-4xl font-bold mb-2">Download Converted File</h1>
+        {% if filename %}
         <h2 class="mb-6 text-sm text-gray-500 sm:text-base lg:mb-8">Your file has been successfully converted. <br>
             Click the button below to download your converted file.</h2>
         
@@ -36,66 +37,18 @@
         </div>
         
         <p class="text-sm text-gray-500">Your download should start automatically. If it doesn't, click the button above.</p>
+        {% else %}
+        <h2 class="mb-6 text-sm text-red-500 sm:text-base lg:mb-8"> There is no converted file. Please upload your file and try again.</h2>
+        <div class="mb-4">
+            <a href="{{ url_for('main.upload_file') }}" class="block w-full text-center cursor-pointer rounded-md bg-black px-6 py-2 font-semibold text-white hover:bg-gray-800 transition duration-300">
+                Upload File
+            </a>
+        </div>
+        {% endif %}
     </div>
 </section>
 
-<section class="py-12">
-  <!-- Container -->
-  <div class="mx-auto flex w-full max-w-7xl flex-col items-center justify-center px-5 py-16 md:px-10 md:py-20">
-    <!-- HEADING TEXT -->
-    <h1 class="text-center text-3xl font-bold lg:text-4xl"> How to convert AVIF to JPG </h1>
-    <p class="font-inter mx-auto mb-12 mt-4 max-w-lg px-5 text-center text-base font-light text-gray-500"> 3 easy steps </p>
-    <!-- HOW IT WORKS STEPS -->
-    <div class="flex flex-col items-start justify-center lg:flex-row">
-      <!-- BLOCK -->
-      <div class="relative my-8 flex w-full rounded-md lg:mx-8 lg:flex-col">
-        <div class="flex h-16 w-16 items-center justify-center rounded-md bg-gray-200">
-          <h2 class="text-3xl font-medium">1</h2>
-        </div>
-        <div class="ml-6 lg:ml-0">
-          <h2 class="mb-5 text-xl font-medium lg:mt-8"> Upload avif file </h2>
-          <p class="font-inter max-w-md pr-5 text-base text-gray-500"> Select files from Computer or by dragging it on the page. <br> Don't forget to submit. </p>
-        </div>
-        <!-- MOBILE - HOW IT WORKS LINE -->
-        <svg class="absolute -bottom-[48px] left-[28px] lg:hidden" width="12" height="70" viewBox="0 0 12 95" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 0.226497L0.226497 6L6 11.7735L11.7735 6L6 0.226497ZM6 94.7735L11.7735 89L6 83.2265L0.226497 89L6 94.7735ZM5 6V10.15H7V6H5ZM5 18.45V26.75H7L7 18.45H5ZM5 35.05L5 43.35H7V35.05H5ZM5 51.65L5 59.95H7L7 51.65H5ZM5 68.25L5 76.55H7L7 68.25H5ZM5 84.85L5 89H7V84.85H5Z" fill="black"></path>
-        </svg>
-        <!-- DESKTOP - HOW IT WORKS LINE -->
-        <svg class="absolute right-0 top-7 hidden lg:block" width="170" height="12" viewBox="0 0 170 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0.226497 6L6 11.7735L11.7735 6L6 0.226497L0.226497 6ZM169.773 6L164 0.226497L158.227 6L164 11.7735L169.773 6ZM6 7H9.95V5H6V7ZM17.85 7H25.75V5H17.85V7ZM33.65 7H41.55V5H33.65V7ZM49.45 7H57.35V5H49.45V7ZM65.25 7H73.15V5H65.25V7ZM81.05 7H88.95V5H81.05V7ZM96.85 7H104.75V5H96.85V7ZM112.65 7H120.55V5H112.65V7ZM128.45 7H136.35V5H128.45V7ZM144.25 7H152.15V5H144.25V7ZM160.05 7H164V5H160.05V7Z" fill="black" />
-        </svg>
-      </div>
-      <!-- BLOCK -->
-      <div class="relative my-8 flex w-full rounded-md lg:mx-8 lg:flex-col">
-        <div class="flex h-16 w-16 items-center justify-center rounded-md bg-gray-200">
-          <h2 class="text-3xl font-medium">2</h2>
-        </div>
-        <div class="ml-6 lg:ml-0">
-          <h2 class="mb-5 text-xl font-medium lg:mt-8"> Click to convert </h2>
-          <p class="font-inter max-w-md pr-5 text-base text-gray-500"> Click on the convert button and wait. </p>
-        </div>
-        <!-- MOBILE - HOW IT WORKS LINE -->
-        <svg class="absolute -bottom-[48px] left-[28px] lg:hidden" width="12" height="70" viewBox="0 0 12 95" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 0.226497L0.226497 6L6 11.7735L11.7735 6L6 0.226497ZM6 94.7735L11.7735 89L6 83.2265L0.226497 89L6 94.7735ZM5 6V10.15H7V6H5ZM5 18.45V26.75H7L7 18.45H5ZM5 35.05L5 43.35H7V35.05H5ZM5 51.65L5 59.95H7L7 51.65H5ZM5 68.25L5 76.55H7L7 68.25H5ZM5 84.85L5 89H7V84.85H5Z" fill="black"></path>
-        </svg>
-        <!-- DESKTOP - HOW IT WORKS LINE -->
-        <svg class="absolute right-0 top-7 hidden lg:block" width="170" height="12" viewBox="0 0 170 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0.226497 6L6 11.7735L11.7735 6L6 0.226497L0.226497 6ZM169.773 6L164 0.226497L158.227 6L164 11.7735L169.773 6ZM6 7H9.95V5H6V7ZM17.85 7H25.75V5H17.85V7ZM33.65 7H41.55V5H33.65V7ZM49.45 7H57.35V5H49.45V7ZM65.25 7H73.15V5H65.25V7ZM81.05 7H88.95V5H81.05V7ZM96.85 7H104.75V5H96.85V7ZM112.65 7H120.55V5H112.65V7ZM128.45 7H136.35V5H128.45V7ZM144.25 7H152.15V5H144.25V7ZM160.05 7H164V5H160.05V7Z" fill="black" />
-        </svg>
-      </div>
-      <!-- BLOCK -->
-      <div class="relative my-8 flex w-full rounded-md lg:mx-8 lg:flex-col">
-        <div class="flex h-16 w-16 items-center justify-center rounded-md bg-gray-200">
-          <h2 class="text-3xl font-medium">3</h2>
-        </div>
-        <div class="ml-6 lg:ml-0">
-          <h2 class="mb-5 text-xl font-medium lg:mt-8"> Download your jpg </h2>
-          <p class="font-inter max-w-md pr-5 text-base text-gray-500"> Let the file convert and you can download your jpg file right afterwards </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{% include "steps.html" %}
 
 {% include "footer.html" %}
 

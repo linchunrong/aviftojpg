@@ -20,8 +20,9 @@ def upload_file():
             return redirect(url_for('main.convert_file', filename=filename))
     return render_template('index.html')
 
-@main_routes.route('/convert/<filename>')
-def convert_file(filename):
+@main_routes.route('/convert', methods=['GET', 'POST'])
+def convert_file():
+    filename = request.args.get('filename')
     return render_template('convert.html', filename=filename)
 
 @main_routes.route('/converting/<filename>')
@@ -33,8 +34,9 @@ def converting(filename):
     
     return redirect(url_for('main.download_file', filename=f"converted_{filename}"))
 
-@main_routes.route('/download/<filename>')
-def download_file(filename):
+@main_routes.route('/download', methods=['GET', 'POST'])
+def download_file():
+    filename = request.args.get('filename')
     return render_template('download.html', filename=filename)
 
 @main_routes.route('/get-file/<filename>')
