@@ -18,10 +18,12 @@
       <!-- web menu -->
       <div class="hidden lg:flex lg:items-center lg:space-x-1 lg:flex-grow">
         <div class="flex items-center space-x-1 mx-auto">
-          <a href="{{ url_for('main.pricing') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> Pricing </a>
-          <a href="{{ url_for('main.faqs') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> FAQs </a>
+          <!-- developing
+          <a href="{{ url_for('main.pricing') }}" class="ddfont-inter rounded-lg px-4 py-2 hover:text-gray-800"> Pricing </a>
+          -->
         </div>
         <div class="flex items-center space-x-1">
+          <a href="{{ url_for('main.faqs') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> FAQs </a>
           <a href="{{ url_for('auth.signup') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> Sign Up </a>
           <a href="{{ url_for('auth.signup') }}" class="font-inter rounded-lg bg-black px-4 py-2 text-center text-white hover:bg-gray-800"> Login </a>
         </div>
@@ -34,7 +36,6 @@
     <!-- mobile menu -->
     <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white z-50 hidden lg:hidden pt-16 shadow-lg">
       <div class="flex flex-col h-full justify-start items-center overflow-y-auto">
-        <a href="{{ url_for('main.pricing') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> Pricing </a>
         <a href="{{ url_for('main.faqs') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> FAQs </a>
         <a href="{{ url_for('auth.signup') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> Sign Up </a>
         <a href="{{ url_for('auth.signup') }}" class="block px-4 py-2 bg-black text-white hover:bg-gray-800 w-full text-center"> Login </a>

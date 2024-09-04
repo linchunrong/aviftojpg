@@ -58,3 +58,7 @@ def about():
 @main_routes.route('/privacy')
 def privacy():
     return render_template('privacy.html')
+
+@main_routes.route('/terms')
+def terms():
+    return render_template('terms.html')
