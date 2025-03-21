@@ -3,3 +3,5 @@ Pillow==10.4.0
 av==12.3.0
 werkzeug==3.0.3
 numpy==2.0.1
+google==3.0.0
+google-auth==2.34.0
