@@ -1,45 +1,69 @@
-<section class="fixed top-0 left-0 right-0 z-40 bg-white shadow-md">
-  <nav class="font-inter mx-auto h-auto w-full max-w-screen-2xl">
+<header class="fixed top-0 left-0 right-0 z-40 bg-white shadow-md">
+  <nav class="font-inter mx-auto h-auto w-full max-w-screen-2xl" aria-label="Main navigation">
     <div class="flex items-center justify-between px-4 py-2 lg:px-10 lg:py-4 xl:px-20">
-      <a href="/" class="flex items-center">
-        <img src="../static/convert-icon.png" alt="aviftojpg logo" class="w-12 lg:w-16">
-        <span class="ml-2 text-lg font-semibold">AVIF Convertor</span>
+      <a href="/" class="flex items-center" aria-label="AVIF Convertor Home">
+        <img src="../static/convert-icon.png" alt="AVIF to JPG Converter Logo" class="w-12 lg:w-16">
+        <h1 class="ml-2 text-lg font-semibold">AVIF Convertor</h1>
       </a>
       
-      <!-- mobile menu -->
-      <button id="menu-toggle" class="z-50 lg:hidden">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- mobile menu button -->
+      <button id="menu-toggle" class="z-50 lg:hidden" aria-label="Toggle mobile menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M3.75 12H20.25" stroke="#160042" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
           <path d="M3.75 6H20.25" stroke="#160042" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
           <path d="M3.75 18H20.25" stroke="#160042" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
       </button>
 
-      <!-- web menu -->
+      <!-- desktop menu -->
       <div class="hidden lg:flex lg:items-center lg:space-x-1 lg:flex-grow">
         <div class="flex items-center space-x-1 mx-auto">
           <!-- developing
           <a href="{{ url_for('main.pricing') }}" class="ddfont-inter rounded-lg px-4 py-2 hover:text-gray-800"> Pricing </a>
           -->
         </div>
-        <div class="flex items-center space-x-1">
+        <nav class="flex items-center space-x-1" aria-label="Secondary navigation">
           <a href="{{ url_for('main.faqs') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> FAQs </a>
-          <a href="{{ url_for('auth.signup') }}" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800"> Sign Up </a>
-          <a href="{{ url_for('auth.signup') }}" class="font-inter rounded-lg bg-black px-4 py-2 text-center text-white hover:bg-gray-800"> Login </a>
+          <div class="flex items-center space-x-1" id="auth-buttons">
+            <a href="#" id="signup-btn" class="font-inter rounded-lg px-4 py-2 hover:text-gray-800" role="button">Sign Up</a>
+            <a href="#" id="login-btn" class="font-inter rounded-lg bg-black px-4 py-2 text-center text-white hover:bg-gray-800" role="button">Login</a>
         </div>
+    
+        <div id="user-profile" style="display: none;" aria-live="polite">
+            <img id="user-avatar" src="" alt="User Profile Picture">
+            <span id="user-name"></span>
+        </div>
+    
+        <div id="login-modal" class="modal" role="dialog" aria-labelledby="login-title">
+            <div class="modal-content">
+                <span class="close" aria-label="Close login modal">&times;</span>
+                <h2 id="login-title">Login with Google</h2>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </div>
+        </div>
+    
+        <div id="signup-modal" class="modal" role="dialog" aria-labelledby="signup-title">
+            <div class="modal-content">
+                <span class="close" aria-label="Close signup modal">&times;</span>
+                <h2 id="signup-title">Sign Up with Google</h2>
+                <div class="g-signin2" data-onsuccess="onSignUp"></div>
+            </div>
+        </div>
+        <script src="../static/js/auth.js"></script>
+        </nav>
       </div>
     </div>
 
     <!-- mobile menu overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden" aria-hidden="true"></div>
 
     <!-- mobile menu -->
-    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white z-50 hidden lg:hidden pt-16 shadow-lg">
-      <div class="flex flex-col h-full justify-start items-center overflow-y-auto">
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white z-50 hidden lg:hidden pt-16 shadow-lg" role="dialog" aria-label="Mobile menu">
+      <nav class="flex flex-col h-full justify-start items-center overflow-y-auto">
         <a href="{{ url_for('main.faqs') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> FAQs </a>
         <a href="{{ url_for('auth.signup') }}" class="block px-4 py-2 hover:bg-gray-100 w-full text-center"> Sign Up </a>
         <a href="{{ url_for('auth.signup') }}" class="block px-4 py-2 bg-black text-white hover:bg-gray-800 w-full text-center"> Login </a>
-      </div>
+      </nav>
     </div>
   </nav>
-</section>
+</header>
